@@ -1,0 +1,104 @@
+# See /usr/share/postfix/main.cf.dist for a commented, more complete version
+
+
+# Debian specific:  Specifying a file name will cause the first
+# line of that file to be used as the name.  The Debian default
+# is /etc/mailname.
+#myorigin = /etc/mailname
+
+# ————— Milter OpenDKIM —————
+milter_default_action = accept
+milter_protocol        = 6
+smtpd_milters = inet:127.0.0.1:8891
+non_smtpd_milters = inet:127.0.0.1:8891
+
+smtpd_banner = $myhostname ESMTP
+biff = no
+
+# appending .domain is the MUA's job.
+append_dot_mydomain = no
+
+# Uncomment the next line to generate "delayed mail" warnings
+#delay_warning_time = 4h
+
+readme_directory = no
+
+# See http://www.postfix.org/COMPATIBILITY_README.html -- default to 3.6 on
+# fresh installs.
+compatibility_level = 3.6
+
+
+
+# TLS parameters
+smtpd_tls_CAfile = /etc/letsencrypt/live/connectia.info/chain.pem
+
+# Certificado y clave (SAN que incluye todos los dominios)
+smtpd_tls_cert_file   = /etc/letsencrypt/live/connectia.info/fullchain.pem
+smtpd_tls_key_file    = /etc/letsencrypt/live/connectia.info/privkey.pem
+
+# Dovecot SASL (usa el socket que creamos)
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_security_options = noanonymous
+smtpd_sasl_local_domain =
+
+smtpd_use_tls = yes
+smtpd_tls_security_level = may
+smtp_tls_security_level    = may
+smtpd_tls_protocols = !SSLv2, !SSLv3
+smtpd_tls_loglevel = 1
+# ---------------------------------------------------
+smtpd_tls_auth_only = yes
+
+# Restringe relay a autenticados y a tu red
+smtpd_recipient_restrictions = permit_sasl_authenticated,permit_mynetworks,reject_unauth_destination
+myhostname = mail.connectia.info
+#alias_maps = hash:/etc/aliases
+#alias_database = hash:/etc/aliases
+myorigin = /etc/mailname
+mydestination = $myhostname, localhost.$mydomain, localhost
+relayhost = 
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
+mailbox_size_limit = 1073741824
+recipient_delimiter = +
+inet_interfaces = all
+inet_protocols = ipv4
+
+###########################
+# Virtual domains & users
+###########################
+virtual_mailbox_domains = mysql:/etc/postfix/mysql-virtual-mailbox-domains.cf
+virtual_mailbox_maps    = mysql:/etc/postfix/mysql-virtual-mailbox-maps.cf
+# virtual_alias_maps      = mysql:/etc/postfix/mysql-virtual-alias-maps.cf
+
+virtual_transport       = lmtp:unix:private/dovecot-lmtp
+virtual_mailbox_base    = /var/mail/vhosts
+virtual_minimum_uid     = 5000
+virtual_uid_maps        = static:5000
+virtual_gid_maps        = static:5000
+smtpd_client_message_rate_limit = 100
+smtpd_client_recipient_rate_limit = 50
+default_destination_concurrency_limit = 20
+default_destination_rate_delay = 1s
+
+message_size_limit = 52428800
+smtp_helo_name = mail.connectia.info
+virtual_alias_maps = hash:/etc/postfix/virtual
+
+transport_maps = hash:/etc/postfix/transport
+sender_canonical_maps = regexp:/etc/postfix/sender_canonical
+canonical_classes = envelope_sender
+
+# Notificar todos los rebotes (bounce y double‐bounce) a esta cuenta:
+bounce_notice_recipient = ndonoso.partner7@gmail.com
+2bounce_notice_recipient = ndonoso.partner7@gmail.com
+
+# Aplicar recipient_canonical para reescribir root@vmi2599867.contaboserver.net
+recipient_canonical_maps = hash:/etc/postfix/recipient_canonical
+
+# ————— Postscreen (DNSBL) —————
+postscreen_dnsbl_sites       = zen.spamhaus.org, bl.spamcop.net
+postscreen_greet_action      = enforce
+postscreen_blacklist_action  = drop
+postscreen_dnsbl_threshold   = 2
