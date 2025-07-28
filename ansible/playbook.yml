@@ -1,0 +1,114 @@
+---
+- hosts: mailserver
+  become: yes
+  vars_files:
+    - vars/main.yml
+
+  tasks:
+    - name: Instalar paquetes requeridos
+      apt:
+        name:
+          - postfix
+          - dovecot-core
+          - dovecot-imapd
+          - apache2
+          - php
+          - php-cli
+          - php-mbstring
+          - php-xml
+          - php-fpm
+          - roundcube
+          - monit
+          - git
+          - composer
+        state: present
+        update_cache: yes
+
+    - name: Copiar configuración de Postfix
+      copy:
+        src: "{{ playbook_dir }}/../postfix/main.cf"
+        dest: /etc/postfix/main.cf
+        owner: root
+        group: root
+        mode: '0644'
+      notify: Restart postfix
+
+    - name: Copiar master.cf
+      copy:
+        src: "{{ playbook_dir }}/../postfix/master.cf"
+        dest: /etc/postfix/master.cf
+        owner: root
+        group: root
+        mode: '0644'
+      notify: Restart postfix
+
+    - name: Copiar configuración de Dovecot
+      copy:
+        src: "{{ playbook_dir }}/../dovecot/"
+        dest: /etc/dovecot/
+        owner: root
+        group: root
+        mode: '0644'
+      notify: Restart dovecot
+
+    - name: Copiar configuración de Monit
+      copy:
+        src: "{{ playbook_dir }}/../monit/monitrc"
+        dest: /etc/monitrc
+        owner: root
+        group: root
+        mode: '0600'
+      notify: Reload monit
+
+    - name: Copiar configuración de sitios Apache
+      copy:
+        src: "{{ playbook_dir }}/../apache2/sites-available/panel.connectia.info.conf"
+        dest: /etc/apache2/sites-available/panel.connectia.info.conf
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Copiar configuración de sitio SSL
+      copy:
+        src: "{{ playbook_dir }}/../apache2/sites-available/panel.connectia.info-le-ssl.conf"
+        dest: /etc/apache2/sites-available/panel.connectia.info-le-ssl.conf
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Activar sitios en Apache
+      command: a2ensite panel.connectia.info.conf panel.connectia.info-le-ssl.conf
+      notify: Reload apache
+
+    - name: Desplegar panel Laravel
+      git:
+        repo: "https://github.com/NickoBart/mailpanel.git"
+        dest: /var/www/mailpanel
+        version: main
+        force: true
+
+    - name: Instalar dependencias con Composer
+      command: composer install --no-dev --optimize-autoloader
+      args:
+        chdir: /var/www/mailpanel
+
+  handlers:
+    - name: Restart postfix
+      service:
+        name: postfix
+        state: restarted
+
+    - name: Restart dovecot
+      service:
+        name: dovecot
+        state: restarted
+
+    - name: Reload apache
+      service:
+        name: apache2
+        state: reloaded
+
+    - name: Reload monit
+      service:
+        name: monit
+        state: reloaded
