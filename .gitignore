@@ -1,0 +1,31 @@
+# Directorios de backup y copias del sistema que no deben versionarse
+vps-backup/
+root/
+var-www/
+var/www/
+*.tar
+*.tar.gz
+*.gz
+*.zip
+
+# Archivos y directorios sensibles
+.bash_history
+.env
+*.env
+
+# Directorios de dependencias o build
+vendor/
+node_modules/
+storage/
+tmp/
+cache/
+*.log
+
+# Mailpanel (Laravel) artefactos
+mailpanel/.env
+mailpanel/storage/
+mailpanel/bootstrap/cache/
+
+# Roundcube directorios temporales
+roundcube/logs/
+roundcube/temp/
