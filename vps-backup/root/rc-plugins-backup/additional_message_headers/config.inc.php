@@ -1,1 +1,0 @@
-/etc/roundcube/plugins/additional_message_headers/config.inc.php

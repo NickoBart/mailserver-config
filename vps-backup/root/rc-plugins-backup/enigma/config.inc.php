@@ -1,1 +1,0 @@
-/etc/roundcube/plugins/enigma/config.inc.php

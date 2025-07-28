@@ -1,9 +1,0 @@
-@props(['icon', 'title', 'text', 'link'])
-
-<a href="{{ $link }}" class="block p-6 bg-white dark:bg-gray-800 rounded-xl shadow hover:shadow-lg transition">
-  <div class="flex items-center justify-center w-12 h-12 mb-4">
-    <img src="{{ asset($icon) }}" alt="{{ $title }} icon" class="max-w-full max-h-full" />
-  </div>
-  <h3 class="text-lg font-semibold mb-2 dark:text-white">{{ $title }}</h3>
-  <p class="text-gray-600 dark:text-gray-300 text-sm">{{ $text }}</p>
-</a>

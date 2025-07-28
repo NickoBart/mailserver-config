@@ -1,4 +1,0 @@
-dns_alert.blade.php
-expiry
-quota
-welcome_subscription.blade.php

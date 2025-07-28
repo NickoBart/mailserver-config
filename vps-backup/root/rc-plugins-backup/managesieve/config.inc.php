@@ -1,1 +1,0 @@
-/etc/roundcube/plugins/managesieve/config.inc.php

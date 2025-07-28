@@ -1,1 +1,0 @@
-/etc/roundcube/plugins/help/config.inc.php

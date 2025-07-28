@@ -1,1 +1,0 @@
-VerifyDomainRecords.php
