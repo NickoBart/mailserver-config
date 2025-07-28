@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout del repo
+        uses: actions/checkout@v3
 
       - name: Configurar SSH
         uses: webfactory/ssh-agent@v0.9.1
