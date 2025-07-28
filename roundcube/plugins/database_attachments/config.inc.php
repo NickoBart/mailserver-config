@@ -1,0 +1,1 @@
+/etc/roundcube/plugins/database_attachments/config.inc.php

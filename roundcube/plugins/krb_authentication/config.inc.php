@@ -1,0 +1,1 @@
+/etc/roundcube/plugins/krb_authentication/config.inc.php

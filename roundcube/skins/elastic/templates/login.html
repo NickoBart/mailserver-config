@@ -1,0 +1,29 @@
+<roundcube:include file="includes/layout.html" />
+
+<h1 class="voice"><roundcube:object name="productname" /> <roundcube:label name="login" /></h1>
+
+<div id="layout-content" class="selected no-navbar" role="main"
+     style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+    <!-- Bloque único centrado -->
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <img src="/images/logo-connectia.png" alt="Logo Connectia"
+             style="width:170px;max-width:60%;margin-bottom:2px;box-shadow: 0 6px 24px #0002; border-radius: 12px;">
+        <roundcube:form id="login-form" name="login-form" method="post" class="propform" style="width:100%; max-width:420px;">
+            <roundcube:object name="loginform" form="login-form" size="40" submit=true class="form-control" />
+            <div id="login-footer" role="contentinfo">
+                <roundcube:object name="productname" condition="config:display_product_info &gt; 0" />
+                <roundcube:object name="version" condition="config:display_product_info == 2" />
+                <roundcube:if condition="config:support_url" />
+                    &nbsp;&bull;&nbsp; <a href="<roundcube:var name='config:support_url' />" target="_blank" class="support-link"><roundcube:label name="support" /></a>
+                <roundcube:endif />
+                <roundcube:container name="loginfooter" id="login-footer" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<noscript>
+    <p class="noscriptwarning"><roundcube:label name="noscriptwarning" /></p>
+</noscript>
+
+<roundcube:include file="includes/footer.html" />
