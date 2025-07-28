@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Ticket;
+
+class TicketMessage extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'ticket_id',
+        'author_type',
+        'author_id',
+        'message',
+    ];
+
+    /**
+     * El ticket al que pertenece este mensaje
+     */
+    public function ticket()
+    {
+        return $this->belongsTo(Ticket::class);
+    }
+
+    /**
+     * Quién escribió este mensaje (User o Client)
+     */
+    public function author()
+    {
+        return $this->morphTo();
+    }
+}

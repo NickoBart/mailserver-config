@@ -1,0 +1,26 @@
+[
+  {
+    "icon": "icons/seguridad-privacidad.png",
+    "title": "Seguridad y privacidad",
+    "text": "Cifrado TLS/SSL de extremo a extremo, contraseñas protegidas con hash seguro, validación automática de SPF/DKIM/DMARC y filtrado antispam/antivirus integrado.",
+    "link": "#"
+  },
+  {
+    "icon": "icons/dominio-propio.png",
+    "title": "Dominio propio",
+    "text": "Configura tu dominio profesional en minutos: validación automática de MX/SPF/DKIM/DMARC e importación instantánea de buzones existentes desde tu panel.",
+    "link": "#"
+  },
+  {
+    "icon": "icons/stream-colaborativo.png",
+    "title": "Streams colaborativos (Próximamente)",
+    "text": "Carpetas y calendarios en vivo: organiza agendas, asigna tareas y trabaja junto a tu equipo directamente desde el panel de correo.",
+    "link": "#"
+  },
+  {
+    "icon": "icons/antispam-avanzado.png",
+    "title": "Antispam avanzado",
+    "text": "Filtro inteligente con SpamAssassin y ClamAV: detecta spam, phishing y virus, envía a cuarentena automática los correos sospechosos y te permite gestionar listas blancas y negras a tu medida.",
+    "link": "#"
+  }
+]

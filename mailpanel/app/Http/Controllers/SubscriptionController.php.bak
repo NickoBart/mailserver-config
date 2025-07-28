@@ -1,0 +1,85 @@
+<?php
+namespace App\Http\Controllers;
+
+use App\Models\Subscription;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeSubscription;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Config;
+
+
+
+class SubscriptionController extends Controller {
+    /** Mostrar estado de la suscripción */
+    public function show() {
+        $user = auth()->user();
+                $subscription = Subscription::where('email', $user->email)->first();
+        $expired = $subscription && $subscription->expires_at->isPast();
+        $daysLeft = $subscription ? now()->diffInDays($subscription->expires_at, false) + 1 : null;
+
+
+        return view('subscriptions.status', ['subscription' => $subscription, 'expired' => $expired, 'daysLeft' => $daysLeft]);
+    }
+
+    public function create() {
+        return view('subscribe.create');
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'name'    => 'required|string|max:255',
+            'email'   => 'required|email|max:255',
+            'domain'  => ['required','regex:/^([a-z0-9](?:[a-z0-9\-]{0,61}[a-z0-9])?\.)+[a-z]{2,}$/i'],
+            'plan_id' => 'nullable|exists:plans,id',
+        ]);
+
+        // 1) Crear la suscripción en BD
+        $subscription = Subscription::create($data);
+
+        // 2) Obtener la tasa USD→CLP en tiempo real
+        $rateResponse = Http::get('https://api.exchangerate-api.com/v4/latest/USD');
+        $rate = $rateResponse->json()['rates']['CLP'] ?? 1;
+
+        // 3) Llamada a Mercado Pago
+        $clpPrice = intval($subscription->plan->price_usd * $rate);
+
+        $response = Http::withToken(Config::get('services.mercadopago.access_token'))
+            ->post('https://api.mercadopago.com/checkout/preferences', [
+                'items' => [[
+                    'title'       => 'Suscripción: '.$subscription->domain,
+                    'quantity'    => 1,
+                    'unit_price'  => $clpPrice,
+                    'currency_id' => 'CLP',
+                ]],
+                'payer' => [
+                    'name'  => $subscription->name,
+                    'email' => $subscription->email,
+                ],
+                'back_urls' => [
+                    'success' => route('subscribe.success'),
+                    'failure' => route('subscribe.failure'),
+                    'pending' => route('subscribe.pending'),
+                ],
+                'auto_return' => 'approved',
+            ]);
+
+        if ($response->failed()) {
+            return redirect()->route('subscribe.create')
+                             ->with('error','Error al iniciar el pago. Intenta nuevamente.');
+        }
+
+        // 4) Guardar preference_id e init_point
+        $body = $response->json();
+        $subscription->update([
+            'preference_id' => $body['id'],
+            'init_point'    => $body['init_point'],
+        ]);
+
+        // 5) Redirigir al checkout de Mercado Pago
+        return redirect()->away($body['init_point']);
+    }
+
+
+}

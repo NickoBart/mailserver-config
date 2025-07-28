@@ -1,0 +1,76 @@
+<!-- resources/views/home.blade.php -->
+<x-guest-layout>
+  <x-slot name="header">
+    {{-- No queremos cabecera en Home --}}
+  </x-slot>
+
+  {{-- Hero estilo Zoho --}}
+  <section id="hero" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-20">
+    <div class="w-full mx-auto grid grid-cols-1 xs:grid-cols-2 items-center gap-8 px-4 max-w-screen-xl">
+      <!-- Columna de texto -->
+      <div class="space-y-6">
+        <h1 class="text-5xl font-extrabold leading-tight">
+          Correo Corporativo
+          <span class="text-indigo-200">Profesional y Seguro</span>
+        </h1>
+        <p class="text-xl">
+          Gestiona dominios, buzones y seguridad DNS con un solo clic.
+        </p>
+        <a href="{{ route('pricing') }}"
+           class="inline-block bg-white text-blue-600 font-semibold px-8 py-4 rounded-lg shadow hover:bg-gray-100 transition">
+          Ver planes
+        </a>
+      </div>
+      <!-- Columna de imagen -->
+      <div class="flex justify-center md:justify-end">
+        <img src="{{ asset('images/hero-ui.png') }}"
+             alt="Panel de Correo Corporativo"
+             class="w-full max-w-full md:max-w-lg rounded-xl shadow-xl">
+      </div>
+    </div>
+  </section>
+
+  {{-- Beneficios --}}
+  <section class="py-16 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-gray-100">Beneficios</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        @foreach($features as $feature)
+          <x-feature-card
+            :icon="$feature['icon']"
+            :title="$feature['title']"
+            :text="$feature['text']"
+            :link="$feature['link']"
+          />
+        @endforeach
+      </div>
+    </div>
+  </section>
+
+  {{-- Testimonios --}}
+  <section class="py-16 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-gray-100">Lo que dicen nuestros clientes</h2>
+      <x-testimonial-slider :testimonios="$testimonios" />
+    </div>
+  </section>
+
+  {{-- Logos de clientes --}}
+  <section class="py-12 bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold mb-6 text-center text-white">Clientes que confían en nosotros</h2>
+      <x-client-logos :logos="$logos" />
+    </div>
+  </section>
+
+  {{-- Preguntas frecuentes --}}
+  <x-faq :faqs="$faqs" />
+
+  {{-- CTAs secundarios --}}
+  <section class="py-12 bg-gray-800 text-center">
+    <div class="max-w-xl mx-auto flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="{{ url('/chat') }}" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Chatea con nosotros</a>
+      <a href="{{ url('/signup?domain=true') }}" class="px-6 py-3 border border-white text-white rounded-lg hover:bg-white hover:text-gray-900 transition">Ya tengo dominio</a>
+    </div>
+  </section>
+</x-guest-layout>

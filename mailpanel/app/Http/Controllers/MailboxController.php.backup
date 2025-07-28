@@ -1,0 +1,93 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
+use App\Models\ClientDomain;
+
+class MailboxController extends Controller
+{
+
+    protected function getCurrentClient()
+    {
+        $user = Auth::user();
+
+        if ($user->client) {
+            return $user->client;
+        }
+
+        // admin@dominio
+        [$local, $host] = explode('@', $user->email, 2);
+        $cd = ClientDomain::where('domain', $host)->firstOrFail();
+        return $cd->client;
+    }
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        // 1) Obtener los dominios del cliente (solo host, ya guardados sin https://)
+        $domains = $this->getCurrentClient()
+                        ->domains()
+                        ->pluck('domain')      // ['https://smartcalling.cl']
+                        ->map(fn($u) => parse_url($u, PHP_URL_HOST))
+                        ->toArray();           // ['smartcalling.cl']
+
+        // 2) Leer buzones de la DB de PostfixAdmin
+        $mailboxes = DB::connection('postfix')
+            ->table('mailbox')
+            ->whereIn('domain', $domains)
+            ->paginate(10);
+
+        return view('mailboxes.index', compact('mailboxes'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $domains = $this->getCurrentClient()->domains()->pluck('domain')->toArray();
+        return view('mailboxes.create', compact('domains'));
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        // 1) Armar la lista de dominios válidos (solo host, sin https://)
+$validDomains = $this->getCurrentClient()                             ->domains()                             ->pluck('domain')                             ->toArray();
+        $domains     = array_map(fn($url) => parse_url($url, PHP_URL_HOST), $domainUrls);
+
+        // 3) Separar local_part y domain
+        [$local, $dom] = explode('@', $mb->username, 2);
+
+        return view('mailboxes.edit', compact('mb','domains','local','dom'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+
+/**
+ * Update the specified resource in storage.
+ */
+    public function update(Request $request, string $username)
+    {
+        // 1) Validar existencia
+        $exists = DB::connection('postfix')
+                    ->table('mailbox')
+                    ->where('username', $username)
+                    ->exists();
+
+        if (! $exists) {
+            return redirect()->route('mailboxes.index')
+                             ->with('error', 'Buzón no encontrado.');
+        }
+
+        // 2) Dominios válidos

@@ -1,0 +1,162 @@
+<?php
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\VerifyCsrfToken;
+
+// Modelos y mail
+use App\Models\Subscription;
+use App\Mail\WelcomeSubscription;
+
+// AdminLTE controllers
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BuzonController;
+use App\Http\Controllers\DominioController;
+use App\Http\Controllers\EstadisticaController;
+use App\Http\Controllers\ConfiguracionController;
+
+// Otros controllers
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DomainController;
+use App\Http\Controllers\MailboxController;
+use App\Http\Controllers\SetupController;
+use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PricingController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\Client\SupportTicketController;
+use App\Http\Controllers\Admin\TicketController as AdminTicketController;
+use Illuminate\Support\Facades\Gate;
+use App\Http\Controllers\MercadoPagoWebhookController;
+
+/*
+|--------------------------------------------------------------------------
+| Public Pages (sin login)
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
+
+Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+Route::get('/checkout', [CheckoutController::class, 'create'])->name('checkout');
+
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+Route::get('/faq', [FaqController::class, 'index'])->name('faq');
+
+// Suscripción simple
+Route::get('/subscribe', [SubscriptionController::class, 'create'])->name('subscribe.create');
+Route::post('/subscribe', [SubscriptionController::class, 'store'])->name('subscribe.store');
+
+// MercadoPago callbacks
+Route::get('/subscribe/success', function(Request $request){
+    $sub = Subscription::where('preference_id',$request->query('pref_id'))->firstOrFail();
+    Mail::to($sub->email)->send(new WelcomeSubscription($sub));
+    return view('subscribe.success');
+})->name('subscribe.success');
+
+Route::get('/subscribe/failure', fn()=>view('subscribe.failure'))->name('subscribe.failure');
+Route::get('/subscribe/pending', fn()=>view('subscribe.pending'))->name('subscribe.pending');
+
+/*
+|--------------------------------------------------------------------------
+| Protected (requiere auth & verified)
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth','verified'])->group(function(){
+
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
+
+    // Buzones
+    Route::get('buzones/datatables',[BuzonController::class,'datatables'])->name('buzones.datatables');
+    Route::resource('buzones', BuzonController::class);
+
+    // Dominios
+    Route::get('dominios/datatables',[DominioController::class,'datatables'])->name('dominios.datatables');
+
+    // Renovación manual (nuevas rutas)
+    Route::get('dominios/{dominio}/renew-manual',[DominioController::class,'renewManualForm'])
+         ->name('dominios.renewManualForm');
+    Route::post('dominios/{dominio}/renew-manual',[DominioController::class,'renewManual'])
+         ->name('dominios.renewManual');
+
+    Route::resource('dominios', DominioController::class);
+    Route::post('dominios/{dominio}/revalidate',[DominioController::class,'revalidate'])
+         ->name('dominios.revalidate');
+
+    // Estadísticas
+    Route::get('/estadisticas',[EstadisticaController::class,'index'])->name('estadisticas.index');
+
+    // Configuración
+    Route::get('/configuracion',[ConfiguracionController::class,'index'])->name('configuracion.index');
+    Route::post('/configuracion',[ConfiguracionController::class,'store'])->name('configuracion.store');
+    Route::put('/configuracion/{setting}',[ConfiguracionController::class,'update'])->name('configuracion.update');
+
+    // Perfil
+    Route::get('/profile',[ProfileController::class,'edit'])->name('profile.edit');
+    Route::patch('/profile',[ProfileController::class,'update'])->name('profile.update');
+    Route::delete('/profile',[ProfileController::class,'destroy'])->name('profile.destroy');
+
+    // Guía DNS
+    Route::get('/setup',[SetupController::class,'index'])->name('setup.index');
+
+    // (Rutas antiguas comentadas)
+    // Route::resource('mailboxes',MailboxController::class)->except('show');
+    // Route::resource('domains',DomainController::class);
+    // Route::post('/domains/{clientDomain}/revalidate',[DomainController::class,'revalidate'])->name('domains.revalidate');
+
+    /**
+     * Soporte - Clientes
+     */
+    Route::prefix('support')->name('support.')->group(function(){
+        Route::resource('tickets', SupportTicketController::class)
+             ->only(['index','create','store','show']);
+
+        Route::post(
+            'tickets/{ticket}/reply',
+            [SupportTicketController::class,'reply']
+        )->name('tickets.reply');
+
+        Route::delete(
+            'tickets/{ticket}/attachments/{attachment}',
+            [\App\Http\Controllers\Client\SupportTicketController::class,'destroyAttachment']
+        )->name('tickets.attachments.destroy');
+    });
+
+    /**
+    * Soporte - Superadmin
+    */
+    Route::middleware('can:admin')
+         ->prefix('admin/support')
+         ->name('admin.support.')
+         ->group(function(){
+        Route::get('tickets',[AdminTicketController::class,'index'])->name('tickets.index');
+        Route::get('tickets/{ticket}',[AdminTicketController::class,'show'])->name('tickets.show');
+        Route::post('tickets/{ticket}/assign',[AdminTicketController::class,'assign'])->name('tickets.assign');
+        Route::post('tickets/{ticket}/reply',[AdminTicketController::class,'reply'])->name('tickets.reply');
+
+        Route::delete(
+            'tickets/{ticket}/attachments/{attachment}',
+            [\App\Http\Controllers\Admin\TicketController::class,'destroyAttachment']
+        )->name('tickets.attachments.destroy');
+        Route::put('tickets/{ticket}',[AdminTicketController::class,'update'])->name('tickets.update');
+    });
+
+}); // end auth|verified
+
+require __DIR__.'/auth.php';
+
+// Webhook MP sin CSRF
+Route::post('/mp/webhook',[MercadoPagoWebhookController::class,'handle'])
+     ->withoutMiddleware([VerifyCsrfToken::class])
+     ->name('mp.webhook');
+
+// Mi Suscripción
+Route::middleware('auth')->get('/mi-suscripcion',[SubscriptionController::class,'show'])
+     ->name('subscription.show');
+Route::post('subscriptions/{subscription}/reactivate',[SubscriptionController::class,'reactivate'])
+     ->name('subscriptions.reactivate');

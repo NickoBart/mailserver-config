@@ -1,0 +1,84 @@
+<?php
+
+namespace App\Http\Controllers\Client;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
+use App\Models\Ticket;
+use App\Models\TicketMessage;
+use App\Notifications\TicketCreated;
+use App\Notifications\TicketReplied;
+
+class SupportTicketController extends Controller
+{
+    public function index()
+    {
+        $tickets = Auth::user()
+                       ->tickets()
+                       ->withCount('messages')
+                       ->latest()
+                       ->paginate(10);
+
+        return view('support.client.index', compact('tickets'));
+    }
+
+    public function create()
+    {
+        return view('support.client.create');
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'subject' => 'required|string|max:255',
+            'initial_message' => 'required|string',
+        ]);
+
+        $ticket = Auth::user()->tickets()->create([
+            'subject' => $data['subject'],
+            'initial_message' => $data['initial_message'],
+        ]);
+
+        Notification::route('mail', [
+            'ndonoso.partner7@gmail.com',
+            'soporte@connectia.info',
+        ])->notify(new TicketCreated($ticket));
+
+        return redirect()->route('support.tickets.show', $ticket)
+                         ->with('success','Ticket creado correctamente.');
+    }
+
+    public function show(Ticket $ticket)
+    {
+        // Asegurar que el usuario ve solo sus tickets
+        abort_unless($ticket->ticketable->is(Auth::user()), 403);
+
+        $messages = $ticket->messages()->with('author')->get();
+
+        return view('support.client.show', compact('ticket','messages'));
+    }
+
+    public function reply(Request $request, Ticket $ticket)
+    {
+        abort_unless($ticket->ticketable->is(Auth::user()), 403);
+
+        $data = $request->validate([
+            'message' => 'required|string',
+        ]);
+
+        $message = new TicketMessage([
+            'message' => $data['message'],
+        ]);
+        $message->author()->associate(Auth::user());
+        $ticket->messages()->save($message);
+
+        Notification::route('mail', [
+            'ndonoso.partner7@gmail.com',
+            'soporte@connectia.info',
+        ])->notify(new TicketReplied($ticket, $message));
+
+        return back()->with('success','Respuesta enviada correctamente.');
+    }
+}
