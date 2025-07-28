@@ -1,0 +1,74 @@
+Return-Path: <ndonoso.partner7@gmail.com>
+Delivered-To: soporte@connectia.info
+Received: from mail.connectia.info
+	by vmi2599867.contaboserver.net with LMTP
+	id Xr66LRlpQGhzgQcASHaq2w
+	(envelope-from <ndonoso.partner7@gmail.com>)
+	for <soporte@connectia.info>; Wed, 04 Jun 2025 10:41:13 -0500
+Authentication-Results: mail.connectia.info;
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20230601 header.b=DMhGQ40b;
+	dkim-atps=neutral
+Received: from localhost (localhost [127.0.0.1])
+	by mail.connectia.info (Postfix) with ESMTP id 977E82802EA
+	for <soporte@connectia.info>; Wed,  4 Jun 2025 10:41:13 -0500 (CDT)
+Received: from mail.connectia.info ([127.0.0.1])
+	by localhost (vmi2599867.contaboserver.net [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dcfN6YonUrcd for <soporte@connectia.info>;
+	Wed,  4 Jun 2025 10:41:13 -0500 (CDT)
+Received: from mail-lf1-f41.google.com (mail-lf1-f41.google.com [209.85.167.41])
+	by mail.connectia.info (Postfix) with ESMTPS id 370742802E8
+	for <soporte@connectia.info>; Wed,  4 Jun 2025 10:41:13 -0500 (CDT)
+Received: by mail-lf1-f41.google.com with SMTP id 2adb3069b0e04-5532a30ac41so7974884e87.0
+        for <soporte@connectia.info>; Wed, 04 Jun 2025 08:41:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749051671; x=1749656471; darn=connectia.info;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=WzJ/UmqSstDUHtGRclP+2ZwDiuSnj0ucGWOO5TOaRu0=;
+        b=DMhGQ40blHEjWNKYFqoMN/Ev8L1PInSjb7pCKw6G5/9EPhwXpucjr74dGValEFzvMr
+         u8P3PNYq0KfSm+HqACbPH7oHUyVol3grdFReuqhYGNy2VoOuyTQDJVd6LWeX+WbaWMb3
+         hhW2B/Sr9ihlfyLgvyXlXFh2dixN3xx8CVXFXJVSjglL37U3yX5l0AZOXm0hv6/vTAu2
+         aj+6hat4Fwnkak18EjSBkQVCJT2nFxppQOeOIMyRkPQNzcxJjXYc+A5JP/9Di0aTRFVd
+         fCjlxp/gD/fkXCrzvxRDsXBsIQgQnl0h70PbvMFHeDxaWPb0pkf/YRbhWvDbTvwGjSy0
+         o9fA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749051671; x=1749656471;
+        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=WzJ/UmqSstDUHtGRclP+2ZwDiuSnj0ucGWOO5TOaRu0=;
+        b=qgpBuaFbAfwMlcvLeEkebjtVKZS+ZdRf/zJs/PyX4pGPLVU8j4oqiUCfndI6IW64Ll
+         0PgJoY35VPpNCfG5/hG7S84tRxb8UpXr1a627eKgNcS/XpqMI4l23Cz2Fe6gylsxbZe4
+         5uSgJe3WCsiE5VXVrIqd8A0J6W1N7tPAtq3CQ1tCWlHUfjntl9u2Q0kTFi8TOam7qZRm
+         zFodhN+ZmRwDCLRNp6AxIGCLsROtFyza2DU4lTiyuiGu2RZ1okF1ZrsRUMoNueChpVyF
+         +t7iKU7gWVbOJ2AOqq/q+GIcMPlhcWRo0Em6A9Efu/afmQa2FC1ajjIo2pBw7RGCgvsM
+         lVQw==
+X-Gm-Message-State: AOJu0YzQoKdQodGSQXp6ipAqZW1QU9gqDnJJdtDyLebUPDTYu8OXyBtp
+	aAeOnNjbSDBMaQFz/wIeMoHv/fuajLyJusGk7k7oBxaEFgiP/6D9EutCDzBOVCVH/12S68d9KFv
+	BAAr6PUKG9ArcncUVqW3jfjnWFERhZ8nR8RLV
+X-Gm-Gg: ASbGncv/pGHpWPAwTLffu4UiNhMtZ18zIwJ2jwexWjukaJPibt9W4YOE8WGDMRdQ4Bo
+	usd/vuL8VSmk6H+VdZghi6tlJGtUi6rSPqELjAAz7KS0ZwNnty1C3VeyeSOzvICDUDBOrt0wX42
+	LYcpEIaZyBBUzD80OBVfDSbTKElRgi/pDkfRo=
+X-Google-Smtp-Source: AGHT+IE+qWE/+zRbIPG35uDelV27sUQKVNFiubPOBVpo5BEnImLetU87NKRKbFo6sZAp3uKiUqfmvWB2e3kKrUedUEM=
+X-Received: by 2002:a05:6512:3b0c:b0:553:28a3:63fe with SMTP id
+ 2adb3069b0e04-55357bacf06mr822457e87.27.1749051670614; Wed, 04 Jun 2025
+ 08:41:10 -0700 (PDT)
+MIME-Version: 1.0
+From: nickolas donoso <ndonoso.partner7@gmail.com>
+Date: Wed, 4 Jun 2025 11:40:58 -0400
+X-Gm-Features: AX0GCFuwWwvcYvxlctDqGPGbYXZVHO9m2aqBCBT9DXAUu-mf5Jnf4Wa23fcBwjk
+Message-ID: <CANUKGOJKOJZG=uG1aGqx7CtVDF7o_6jfX_D3rd2NpkG3PSsVtQ@mail.gmail.com>
+Subject: correo1
+To: soporte@connectia.info
+Content-Type: multipart/alternative; boundary="0000000000008555ce0636c0d3fe"
+
+--0000000000008555ce0636c0d3fe
+Content-Type: text/plain; charset="UTF-8"
+
+correo1
+
+--0000000000008555ce0636c0d3fe
+Content-Type: text/html; charset="UTF-8"
+
+<div dir="ltr">correo1</div>
+
+--0000000000008555ce0636c0d3fe--

@@ -1,0 +1,26 @@
+[
+  {
+    "icon": "heroicon-o-shield-check",
+    "title": "Seguridad y privacidad",
+    "text": "Protege tus correos con cifrado avanzado.",
+    "link": "#"
+  },
+  {
+    "icon": "heroicon-o-globe-alt",
+    "title": "Dominio propio",
+    "text": "Usa tu propio dominio profesional.",
+    "link": "#"
+  },
+  {
+    "icon": "heroicon-o-user-group",
+    "title": "Streams colaborativos",
+    "text": "Colabora en carpetas y calendarios en tiempo real.",
+    "link": "#"
+  },
+  {
+    "icon": "heroicon-o-bolt",
+    "title": "Antispam avanzado",
+    "text": "Filtro inteligente de correos no deseados.",
+    "link": "#"
+  }
+]

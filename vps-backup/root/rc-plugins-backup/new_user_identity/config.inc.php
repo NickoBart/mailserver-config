@@ -1,0 +1,1 @@
+/etc/roundcube/plugins/new_user_identity/config.inc.php

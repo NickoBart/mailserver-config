@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Ana Pérez",
+    "cargo": "CTO, Onesale",
+    "texto": "Desde que migramos a Connectia Mail, nuestra tasa de entrega superó el 99 % y la verificación automática de DNS nos ahorra horas de configuración cada semana. Su cifrado TLS/SSL y el filtrado antispam integrado nos brindan la tranquilidad que necesitábamos.",
+    "foto": "/images/testimonios/ana.png"
+  },
+  {
+    "name": "Luis Gómez",
+    "cargo": "CEO, SantiTV",
+    "texto": "Configurar nuestro dominio y buzones tomó menos de 15 minutos gracias al panel intuitivo. Además, el equipo de soporte respondió en menos de 10 min tras nuestra consulta, demostrando su compromiso con la seguridad y la fiabilidad.",
+    "foto": "/images/testimonios/luis.png"
+  }
+]

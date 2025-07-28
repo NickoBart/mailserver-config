@@ -1,0 +1,59 @@
+DOVECOT_INSTALLED=no
+DOVECOT_CFLAGS="-std=gnu99 -g -O2 -fstack-protector-strong -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -mfunction-return=keep -mindirect-branch=keep -Wall -W -Wmissing-prototypes -Wmissing-declarations -Wpointer-arith -Wchar-subscripts -Wformat=2 -Wbad-function-cast -fno-builtin-strftime -Wstrict-aliasing=2 "
+DOVECOT_LIBS=""
+DOVECOT_SSL_LIBS="-lssl -lcrypto "
+DOVECOT_SQL_LIBS="-L/usr/lib/x86_64-linux-gnu -lmysqlclient -lzstd -lssl -lcrypto -lresolv -lm   "
+DOVECOT_COMPRESS_LIBS=" -lz"
+DOVECOT_LUA_LIBS=""
+DOVECOT_LUA_CFLAGS=""
+DOVECOT_BINARY_CFLAGS="-fPIE -DPIE"
+DOVECOT_BINARY_LDFLAGS="-pie -Wl,-z -Wl,relro -Wl,-z -Wl,now"
+
+LIBDOVECOT="/root/dovecot-2.3.16/src/lib-dovecot/libdovecot.la -export-dynamic"
+LIBDOVECOT_LOGIN="/root/dovecot-2.3.16/src/login-common/libdovecot-login.la -lssl -lcrypto "
+LIBDOVECOT_SQL="/root/dovecot-2.3.16/src/lib-sql/libsql.la"
+LIBDOVECOT_COMPRESS="/root/dovecot-2.3.16/src/lib-compression/libcompression.la"
+LIBDOVECOT_LDA="/root/dovecot-2.3.16/src/lib-lda/libdovecot-lda.la"
+LIBDOVECOT_STORAGE="/root/dovecot-2.3.16/src/lib-storage/libdovecot-storage.la /root/dovecot-2.3.16/src/lib-imap-storage/libimap-storage.la"
+LIBDOVECOT_DSYNC="/root/dovecot-2.3.16/src/doveadm/dsync/libdovecot-dsync.la"
+LIBDOVECOT_LIBFTS="/root/dovecot-2.3.16/src/lib-fts/libfts.la"
+LIBDOVECOT_LUA=""
+
+LIBDOVECOT_DEPS="/root/dovecot-2.3.16/src/lib-dovecot/libdovecot.la"
+LIBDOVECOT_LOGIN_DEPS="/root/dovecot-2.3.16/src/login-common/libdovecot-login.la"
+LIBDOVECOT_SQL_DEPS="/root/dovecot-2.3.16/src/lib-sql/libsql.la"
+LIBDOVECOT_COMPRESS_DEPS="/root/dovecot-2.3.16/src/lib-compression/libcompression.la"
+LIBDOVECOT_LDA_DEPS="/root/dovecot-2.3.16/src/lib-lda/libdovecot-lda.la"
+LIBDOVECOT_STORAGE_DEPS="/root/dovecot-2.3.16/src/lib-storage/libdovecot-storage.la /root/dovecot-2.3.16/src/lib-imap-storage/libimap-storage.la"
+LIBDOVECOT_DSYNC_DEPS="/root/dovecot-2.3.16/src/doveadm/dsync/libdovecot-dsync.la"
+LIBDOVECOT_LIBFTS_DEPS="/root/dovecot-2.3.16/src/lib-fts/libfts.la"
+LIBDOVECOT_LUA_DEPS=""
+
+LIBDOVECOT_INCLUDE="-I/root/dovecot-2.3.16 -I/root/dovecot-2.3.16/src/lib -I/root/dovecot-2.3.16/src/lib-dict -I/root/dovecot-2.3.16/src/lib-dns -I/root/dovecot-2.3.16/src/lib-http -I/root/dovecot-2.3.16/src/lib-mail -I/root/dovecot-2.3.16/src/lib-smtp -I/root/dovecot-2.3.16/src/lib-imap -I/root/dovecot-2.3.16/src/lib-fs -I/root/dovecot-2.3.16/src/lib-charset -I/root/dovecot-2.3.16/src/lib-auth -I/root/dovecot-2.3.16/src/lib-master -I/root/dovecot-2.3.16/src/lib-ssl-iostream -I/root/dovecot-2.3.16/src/lib-compression -I/root/dovecot-2.3.16/src/lib-settings -I/root/dovecot-2.3.16/src/lib-test -I/root/dovecot-2.3.16/src/lib-sasl -I/root/dovecot-2.3.16/src/lib-old-stats -I/root/dovecot-2.3.16/src/lib-dcrypt -I/root/dovecot-2.3.16/src/lib-program-client"
+LIBDOVECOT_LDA_INCLUDE="-I/root/dovecot-2.3.16/src/lib-lda -I/root/dovecot-2.3.16/src/lda"
+LIBDOVECOT_AUTH_INCLUDE="-I/root/dovecot-2.3.16/src/auth"
+LIBDOVECOT_DOVEADM_INCLUDE="-I/root/dovecot-2.3.16/src/doveadm"
+LIBDOVECOT_STORAGE_INCLUDE="-I/root/dovecot-2.3.16/src/lib-index -I/root/dovecot-2.3.16/src/lib-storage -I/root/dovecot-2.3.16/src/lib-storage/list -I/root/dovecot-2.3.16/src/lib-storage/index -I/root/dovecot-2.3.16/src/lib-storage/index/raw -I/root/dovecot-2.3.16/src/lib-imap-storage -I/root/dovecot-2.3.16/src/plugins/quota"
+LIBDOVECOT_DSYNC_INCLUDE="-I/root/dovecot-2.3.16/src/doveadm/dsync"
+LIBDOVECOT_LOGIN_INCLUDE="-I/root/dovecot-2.3.16/src/login-common"
+LIBDOVECOT_SQL_INCLUDE="-I/root/dovecot-2.3.16/src/lib-sql"
+LIBDOVECOT_IMAP_LOGIN_INCLUDE="-I/root/dovecot-2.3.16/src/imap-login"
+LIBDOVECOT_IMAP_INCLUDE="-I/root/dovecot-2.3.16/src/imap"
+LIBDOVECOT_POP3_INCLUDE="-I/root/dovecot-2.3.16/src/pop3"
+LIBDOVECOT_SUBMISSION_INCLUDE="-I/root/dovecot-2.3.16/src/submission"
+LIBDOVECOT_LMTP_INCLUDE="-I/root/dovecot-2.3.16/src/lmtp"
+LIBDOVECOT_CONFIG_INCLUDE="-I/root/dovecot-2.3.16/src/config"
+LIBDOVECOT_IMAPC_INCLUDE="-I/root/dovecot-2.3.16/src/lib-imap-client -I/root/dovecot-2.3.16/src/lib-storage/index/imapc"
+LIBDOVECOT_FTS_INCLUDE="-I/root/dovecot-2.3.16/src/plugins/fts"
+LIBDOVECOT_NOTIFY_INCLUDE="-I/root/dovecot-2.3.16/src/plugins/notify"
+LIBDOVECOT_PUSH_NOTIFICATION_INCLUDE="-I/root/dovecot-2.3.16/src/plugins/push-notification"
+LIBDOVECOT_ACL_INCLUDE="-I/root/dovecot-2.3.16/src/plugins/acl"
+LIBDOVECOT_LIBFTS_INCLUDE="-I/root/dovecot-2.3.16/src/lib-fts"
+LIBDOVECOT_LUA_INCLUDE="-I/root/dovecot-2.3.16/src/lib-lua"
+
+dovecot_pkgincludedir=/usr/local/include/dovecot
+dovecot_pkglibdir=/usr/local/lib/dovecot
+dovecot_pkglibexecdir=/usr/local/libexec/dovecot
+dovecot_docdir=/usr/local/share/doc/dovecot
+dovecot_moduledir=/usr/local/lib/dovecot
+dovecot_statedir=/usr/local/var/lib/dovecot

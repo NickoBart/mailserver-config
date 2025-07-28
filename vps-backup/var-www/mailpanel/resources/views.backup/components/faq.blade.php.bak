@@ -1,0 +1,24 @@
+@props(['faqs'])
+<section class="py-16 bg-gray-50 dark:bg-gray-900">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-2xl font-bold mb-6 text-center dark:text-gray-100">Preguntas frecuentes</h2>
+    <div x-data="{ open: null }" class="space-y-4">
+      @foreach(\$faqs as \$i => \$faq)
+        <div class="border-b">
+          <button
+            @click="open === {{ \$i }} ? open = null : open = {{ \$i }}"
+            class="w-full flex justify-between items-center py-3 text-left"
+          >
+            <span class="font-medium">{{ \$faq['question'] }}</span>
+            <svg x-bind:class="{ 'transform rotate-180': open === {{ \$i }} }" class="w-5 h-5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div x-show="open === {{ \$i }}" x-collapse class="pb-4 text-gray-700 dark:text-gray-300">
+            {{ \$faq['answer'] }}
+          </div>
+        </div>
+      @endforeach
+    </div>
+  </div>
+</section>

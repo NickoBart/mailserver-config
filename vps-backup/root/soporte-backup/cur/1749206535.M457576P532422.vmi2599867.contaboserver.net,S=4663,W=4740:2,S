@@ -1,0 +1,77 @@
+Return-Path: <noreply-dmarc-support@google.com>
+Delivered-To: soporte@connectia.info
+Received: from mail.connectia.info
+	by vmi2599867.contaboserver.net with LMTP
+	id sESyGAfGQmjGHwgASHaq2w
+	(envelope-from <noreply-dmarc-support@google.com>)
+	for <soporte@connectia.info>; Fri, 06 Jun 2025 05:42:15 -0500
+Authentication-Results: mail.connectia.info;
+	dkim=pass (2048-bit key; unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256 header.s=20230601 header.b=a8Fdrt6x;
+	dkim-atps=neutral
+Received: from localhost (localhost [127.0.0.1])
+	by mail.connectia.info (Postfix) with ESMTP id 1A97F280CB5
+	for <soporte@connectia.info>; Fri,  6 Jun 2025 05:42:15 -0500 (CDT)
+Received: from mail.connectia.info ([127.0.0.1])
+	by localhost (vmi2599867.contaboserver.net [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PA7hX8jAPYb9 for <soporte@connectia.info>;
+	Fri,  6 Jun 2025 05:42:14 -0500 (CDT)
+Received: from mail-qv1-f73.google.com (mail-qv1-f73.google.com [209.85.219.73])
+	by mail.connectia.info (Postfix) with ESMTPS id 96C472802AB
+	for <soporte@connectia.info>; Fri,  6 Jun 2025 05:42:14 -0500 (CDT)
+Received: by mail-qv1-f73.google.com with SMTP id 6a1803df08f44-6fac4b26c69so18431746d6.3
+        for <soporte@connectia.info>; Fri, 06 Jun 2025 03:42:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1749206533; x=1749811333; darn=connectia.info;
+        h=content-transfer-encoding:content-disposition:to:from:subject
+         :message-id:date:mime-version:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=8HHgo6JCxAUSA+G5j4TLnQyYxEaG+cBsnjnICinDmRk=;
+        b=a8Fdrt6xXdyryBWLFtFpF/wY/LnaSpoQEM1ADWUwe7U29c8vVBFAuGLxDgIsX4yhxW
+         ZQZkiRKFlh6HkgaNLfgRMyVR324mLPk/h3wzxb9C/ClYayJh/FeDSBjpxj7EgqlV73G4
+         PIYaPoEsvYcEp3SjhymZLjxO3KPiroMkBhn/zG/a6oWgPVVMGhia4VNZ9rjv0p2RA4fM
+         rrnKNmMFsR89dtWPNvVr14ZHRvLoVoCp0sQmbmbBNuea5y9g0LHayFiCfH73Bq5UiFe1
+         YEZHsXysWGTS/zoJytSahD3yS1YwBG8DYDR0NXN0akLXVb/jvLOjOqqBudPjmcZ8Rf8V
+         Rk6g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749206533; x=1749811333;
+        h=content-transfer-encoding:content-disposition:to:from:subject
+         :message-id:date:mime-version:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=8HHgo6JCxAUSA+G5j4TLnQyYxEaG+cBsnjnICinDmRk=;
+        b=CyphOJ+HgkxJFpsxUPledT7Vs8WkoFPpAPmOyq7xLIU2lmpoC0zk0Ajq3HynkzHaJQ
+         lSgHdc95rINY9q/xT5q5WtgbH+ngzPFL1E4lmaeut+DRwvTuprF73jNqqrWbYDje1im9
+         2q1NmBdeWVAZdq1+2siic6SuggHW7587JcznTCLewn+RORAiKaVVDX1xV2fCRcei4utd
+         32nmbYha5Rx8dRifWs71WpSGyFE6itpOLPR33HfUqrhrYBFQQOmNrJyYNQ7mM/RfBkth
+         U/C6LCUaJbXSG+7ntQY1WHlSenr2NMmEHdd9YdqsZnMyBk4ltVQ/w0r21nwzT1EhyNje
+         orPA==
+X-Gm-Message-State: AOJu0YzAM4Kq/PASWmENvbWlLjLM20DgjCH5GNpY8uPPr7SCi9DnPl2f
+	yNahy7pA3p/FklWhMoL5zU+RTKspPA7wlB9nvWI9rW3E9dxqb3zb4eWAp4iEfqJ5sWvbdDo=
+X-Google-Smtp-Source: AGHT+IH0THEmwXV3wglxg58SrA3fnuW+k7/mfrPvCGYr8Si1QYsHpL+iPmmsL0OiHHOmHIk7r4/yqLIuk2g5+Q==
+MIME-Version: 1.0
+X-Received: by 2002:ad4:5dc2:0:b0:6e6:5bd5:f3c3 with SMTP id
+ 6a1803df08f44-6fb08fca84dmr39143236d6.44.1749206533562; Fri, 06 Jun 2025
+ 03:42:13 -0700 (PDT)
+Date: Thu, 05 Jun 2025 16:59:59 -0700
+Message-ID: <16554032153353946547@google.com>
+Subject: Report domain: smartcalling.cl Submitter: google.com Report-ID: 16554032153353946547
+From: noreply-dmarc-support@google.com
+To: soporte@connectia.info
+Content-Type: application/zip; 
+	name="google.com!smartcalling.cl!1749081600!1749167999.zip"
+Content-Disposition: attachment; 
+	filename="google.com!smartcalling.cl!1749081600!1749167999.zip"
+Content-Transfer-Encoding: base64
+
+UEsDBAoAAAAIAKBNxlpi235s5AEAAFgEAAA0AAAAZ29vZ2xlLmNvbSFzbWFydGNhbGxpbmcuY2wh
+MTc0OTA4MTYwMCExNzQ5MTY3OTk5LnhtbI1Uy3LjIBC85ytcvltYtiRbW4TsKV+QPaswQjIVBBSg
+PP5+hwCyduNDToaenp6ZHiz89DHJzRu3Tmj1uC2L/XbDFdO9UOPj9s/L8+683TyRBzxw3l8oeyUP
+mw1OfAJ0jPIlBCw32vpu4p721NOAAart2Ck6cTJqPUpeMD1htICRwycqJFEaFOTnrp+oZTs3myD3
+e50WeSnnw1vaMa08Zb4TatDk6r1xvxBKqcUtFVFElXvnFh2qpqnP0Pmd/CicxhA9KZu6rvbHQ1kf
+j/WxrZq6OmF0i0c+zMo7S9WYpgHowkcBBp2qdn8umz1Ui0iOc9V/Rcvm1LYt9KKyGPpXbam2NhUb
+LQX77Mx8kcJd+dKIBnsUcWCfZ1RK2GLBJEhGPJJo/yomYjGKhwQ6M3xh4TdCBtahOEYm3V0GXEYM
+86QMs4VDhFQmKRO7v9cpGMy0zU1b/b7Y4vRsGe+EIYd9W5RVXVRt0Zyh5hLIVKZn5ckBo3jIcKrH
+36icwcg+B4I7whnthA+vNTa5Rla8YMsA7wwIi0PJgoEY6lzwYFhKovs1YXN5Mix6rrwYBPxXlrQr
+pz233WD19H1j62BS+6aB6eyvneVulv4mu+rshy8ivfkgk6ZLl2XA26NA/9cM5LhMjG4fib9QSwEC
+CgAKAAAACACgTcZaYtt+bOQBAABYBAAANAAAAAAAAAAAAAAAAAAAAAAAZ29vZ2xlLmNvbSFzbWFy
+dGNhbGxpbmcuY2whMTc0OTA4MTYwMCExNzQ5MTY3OTk5LnhtbFBLBQYAAAAAAQABAGIAAAA2AgAA
+AAA=

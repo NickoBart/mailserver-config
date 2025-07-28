@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Ana Pérez",
+    "cargo": "CTO, Acme Corp",
+    "texto": "Connectia nos ha ahorrado horas de gestión de DNS y correo.",
+    "foto": "/images/testimonios/ana.png"
+  },
+  {
+    "name": "Luis Gómez",
+    "cargo": "CEO, PymeX",
+    "texto": "El mejor soporte que hemos tenido en 10 años.",
+    "foto": "/images/testimonios/luis.png"
+  }
+  // …añade más
+]

@@ -1,0 +1,1 @@
+/etc/roundcube/plugins/emoticons/config.inc.php

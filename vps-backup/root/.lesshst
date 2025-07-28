@@ -1,0 +1,21 @@
+.less-history-file:
+.search
+"/ 3) Crea un ClientLogin por cada buzón
+"/ 4) Comprueba cuantos tienes ahora
+"/ 3) Trae todos los buzones de ese domain_id
+"/) Importa cada buzón en client_logins
+"/ 3) Trae todos los buzones de ese domain_id
+"/) Importa cada buzón en client_logins
+"/ 3) Trae todos los buzones de ese domain_id
+"/) Importa cada buzón en client_logins
+"/ 3) Carga de buzones
+"/) Importa en client_logins
+"/ 3) Trae todos los buzones de ese domain_id
+"/) Importa en client_logins y muestra antes/después
+"/ --- 2) Trae los buzones con get()
+"/ Trae todos los buzones de PostfixAdmin
+"/ Comprueba que haya importado
+"/ 2) Trae los buzones de PostfixAdmin
+"/ 4) Verifica cuántos se importaron
+.shell
+" $pfDomain) {

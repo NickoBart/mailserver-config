@@ -1,0 +1,1 @@
+/etc/roundcube/plugins/markasjunk/config.inc.php

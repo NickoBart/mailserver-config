@@ -1,0 +1,7 @@
+# HSTS 1.0 Known Hosts database for GNU Wget.
+# Edit at your own risk.
+# <hostname>	<port>	<incl. subdomains>	<created>	<max-age>
+dovecot.org	0	1	1750099821	31536000
+artifacts.elastic.co	0	1	1750107976	31536000
+github.com	0	1	1750702214	31536000
+codeload.github.com	0	0	1750309820	31536000

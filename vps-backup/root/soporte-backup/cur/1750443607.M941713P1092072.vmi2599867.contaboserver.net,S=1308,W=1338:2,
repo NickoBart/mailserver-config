@@ -1,0 +1,30 @@
+Return-Path: <soporte@connectia.info>
+Delivered-To: soporte@connectia.info
+Received: from mail.connectia.info
+	by vmi2599867.contaboserver.net with LMTP
+	id 3uaaN1emVWjoqRAASHaq2w
+	(envelope-from <soporte@connectia.info>)
+	for <soporte@connectia.info>; Fri, 20 Jun 2025 13:20:07 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=connectia.info;
+	s=default; t=1750443607;
+	bh=ecGWgWCJeWxJFeM0urOVWP+KOlqqvsQYKOpYUP8nk7I=;
+	h=Date:To:From:Subject;
+	b=lEOXiPM3+TgdiSyZSVFrdueFCM8bFMvRBLUR0D/nEBPK82R6spMzAGU+jAyS17peq
+	 YatUUX2Ouasj+leIt5mgLDcWI1Hu7PQ/XjZ81YBlvqz8RZvvKoi3RmOwHkpaQErgdQ
+	 2UbNmbwNQV9g7bSmUlBnj1Dc61Oq3zkY6c5dOYDnvsuraF0iqJOm4u9Gf7A45W/tdB
+	 6jqLv9DEjGFZU8RL9HNVkvhDlf3UIHWshfeyHCAmth77qWw8pEgnmCtwkmuDxvrkw4
+	 igWVLSJTELr++K9GOA4CcimfpBCHFo3H4Zyb94AFRVfxjpe/EHqT/jcFKQ9KR6oYG/
+	 6jeYzo7xY1SRw==
+Received: from vmi2599867.contaboserver.net (localhost [127.0.0.1])
+	by mail.connectia.info (Postfix) with ESMTPSA id A070F280E09
+	for <soporte@connectia.info>; Fri, 20 Jun 2025 13:20:07 -0500 (CDT)
+Date: Fri, 20 Jun 2025 13:20:07 -0500
+To: soporte@connectia.info
+From: soporte@connectia.info
+Subject: test Fri, 20 Jun 2025 13:20:07 -0500
+Message-Id: <20250620132007.1092065@vmi2599867.contaboserver.net>
+X-Mailer: swaks v20201014.0 jetmore.org/john/code/swaks/
+
+This is a test mailing
+
+

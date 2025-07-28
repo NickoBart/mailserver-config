@@ -1,0 +1,1 @@
+/etc/roundcube/plugins/redundant_attachments/config.inc.php

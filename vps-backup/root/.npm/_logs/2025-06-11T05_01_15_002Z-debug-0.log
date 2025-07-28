@@ -1,0 +1,396 @@
+0 verbose cli /usr/bin/node /usr/bin/npm
+1 info using npm@10.8.2
+2 info using node@v18.20.8
+3 silly config load:file:/usr/lib/node_modules/npm/npmrc
+4 silly config load:file:/var/www/mailpanel/.npmrc
+5 silly config load:file:/root/.npmrc
+6 silly config load:file:/usr/etc/npmrc
+7 verbose title npm install @splidejs/splide
+8 verbose argv "install" "@splidejs/splide"
+9 verbose logfile logs-max:10 dir:/root/.npm/_logs/2025-06-11T05_01_15_002Z-
+10 verbose logfile /root/.npm/_logs/2025-06-11T05_01_15_002Z-debug-0.log
+11 silly packumentCache heap:2197815296 maxSize:549453824 maxEntrySize:274726912
+12 silly logfile start cleaning logs, removing 1 files
+13 silly logfile done cleaning log files
+14 silly idealTree buildDeps
+15 silly fetch manifest @splidejs/splide@^4.1.4
+16 silly packumentCache full:https://registry.npmjs.org/@splidejs%2fsplide cache-miss
+17 http fetch GET 200 https://registry.npmjs.org/@splidejs%2fsplide 467ms (cache revalidated)
+18 silly packumentCache full:https://registry.npmjs.org/@splidejs%2fsplide set size:494503 disposed:false
+19 silly placeDep ROOT @splidejs/splide@4.1.4 REPLACE for:  want: ^4.1.4
+20 silly reify moves {}
+21 silly audit bulk request {
+21 silly audit   '@alloc/quick-lru': [ '5.2.0' ],
+21 silly audit   '@esbuild/aix-ppc64': [ '0.21.5' ],
+21 silly audit   '@esbuild/android-arm': [ '0.21.5' ],
+21 silly audit   '@esbuild/android-arm64': [ '0.21.5' ],
+21 silly audit   '@esbuild/android-x64': [ '0.21.5' ],
+21 silly audit   '@esbuild/darwin-arm64': [ '0.21.5' ],
+21 silly audit   '@esbuild/darwin-x64': [ '0.21.5' ],
+21 silly audit   '@esbuild/freebsd-arm64': [ '0.21.5' ],
+21 silly audit   '@esbuild/freebsd-x64': [ '0.21.5' ],
+21 silly audit   '@esbuild/linux-arm': [ '0.21.5' ],
+21 silly audit   '@esbuild/linux-arm64': [ '0.21.5' ],
+21 silly audit   '@esbuild/linux-ia32': [ '0.21.5' ],
+21 silly audit   '@esbuild/linux-loong64': [ '0.21.5' ],
+21 silly audit   '@esbuild/linux-mips64el': [ '0.21.5' ],
+21 silly audit   '@esbuild/linux-ppc64': [ '0.21.5' ],
+21 silly audit   '@esbuild/linux-riscv64': [ '0.21.5' ],
+21 silly audit   '@esbuild/linux-s390x': [ '0.21.5' ],
+21 silly audit   '@esbuild/linux-x64': [ '0.21.5' ],
+21 silly audit   '@esbuild/netbsd-x64': [ '0.21.5' ],
+21 silly audit   '@esbuild/openbsd-x64': [ '0.21.5' ],
+21 silly audit   '@esbuild/sunos-x64': [ '0.21.5' ],
+21 silly audit   '@esbuild/win32-arm64': [ '0.21.5' ],
+21 silly audit   '@esbuild/win32-ia32': [ '0.21.5' ],
+21 silly audit   '@esbuild/win32-x64': [ '0.21.5' ],
+21 silly audit   '@isaacs/cliui': [ '8.0.2' ],
+21 silly audit   '@jridgewell/gen-mapping': [ '0.3.8' ],
+21 silly audit   '@jridgewell/resolve-uri': [ '3.1.2' ],
+21 silly audit   '@jridgewell/set-array': [ '1.2.1' ],
+21 silly audit   '@jridgewell/sourcemap-codec': [ '1.5.0' ],
+21 silly audit   '@jridgewell/trace-mapping': [ '0.3.25' ],
+21 silly audit   '@nodelib/fs.scandir': [ '2.1.5' ],
+21 silly audit   '@nodelib/fs.stat': [ '2.0.5' ],
+21 silly audit   '@nodelib/fs.walk': [ '1.2.8' ],
+21 silly audit   '@pkgjs/parseargs': [ '0.11.0' ],
+21 silly audit   '@rollup/rollup-android-arm-eabi': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-android-arm64': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-darwin-arm64': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-darwin-x64': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-freebsd-arm64': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-freebsd-x64': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-linux-arm-gnueabihf': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-linux-arm-musleabihf': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-linux-arm64-gnu': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-linux-arm64-musl': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-linux-loongarch64-gnu': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-linux-powerpc64le-gnu': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-linux-riscv64-gnu': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-linux-riscv64-musl': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-linux-s390x-gnu': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-linux-x64-gnu': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-linux-x64-musl': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-win32-arm64-msvc': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-win32-ia32-msvc': [ '4.40.2' ],
+21 silly audit   '@rollup/rollup-win32-x64-msvc': [ '4.40.2' ],
+21 silly audit   '@tailwindcss/forms': [ '0.5.10' ],
+21 silly audit   '@types/estree': [ '1.0.7' ],
+21 silly audit   '@vue/reactivity': [ '3.1.5' ],
+21 silly audit   '@vue/shared': [ '3.1.5' ],
+21 silly audit   alpinejs: [ '3.14.9' ],
+21 silly audit   'ansi-regex': [ '6.1.0', '5.0.1' ],
+21 silly audit   'ansi-styles': [ '6.2.1', '4.3.0' ],
+21 silly audit   'any-promise': [ '1.3.0' ],
+21 silly audit   anymatch: [ '3.1.3' ],
+21 silly audit   arg: [ '5.0.2' ],
+21 silly audit   asynckit: [ '0.4.0' ],
+21 silly audit   autoprefixer: [ '10.4.21' ],
+21 silly audit   axios: [ '1.9.0' ],
+21 silly audit   'balanced-match': [ '1.0.2' ],
+21 silly audit   'binary-extensions': [ '2.3.0' ],
+21 silly audit   'brace-expansion': [ '2.0.1' ],
+21 silly audit   braces: [ '3.0.3' ],
+21 silly audit   browserslist: [ '4.24.5' ],
+21 silly audit   'call-bind-apply-helpers': [ '1.0.2' ],
+21 silly audit   'camelcase-css': [ '2.0.1' ],
+21 silly audit   'caniuse-lite': [ '1.0.30001717' ],
+21 silly audit   chokidar: [ '3.6.0' ],
+21 silly audit   'glob-parent': [ '5.1.2', '6.0.2' ],
+21 silly audit   'color-convert': [ '2.0.1' ],
+21 silly audit   'color-name': [ '1.1.4' ],
+21 silly audit   'combined-stream': [ '1.0.8' ],
+21 silly audit   commander: [ '4.1.1' ],
+21 silly audit   'cross-spawn': [ '7.0.6' ],
+21 silly audit   cssesc: [ '3.0.0' ],
+21 silly audit   'delayed-stream': [ '1.0.0' ],
+21 silly audit   didyoumean: [ '1.2.2' ],
+21 silly audit   dlv: [ '1.1.3' ],
+21 silly audit   'dunder-proto': [ '1.0.1' ],
+21 silly audit   eastasianwidth: [ '0.2.0' ],
+21 silly audit   'electron-to-chromium': [ '1.5.151' ],
+21 silly audit   'emoji-regex': [ '9.2.2', '8.0.0' ],
+21 silly audit   'es-define-property': [ '1.0.1' ],
+21 silly audit   'es-errors': [ '1.3.0' ],
+21 silly audit   'es-object-atoms': [ '1.1.1' ],
+21 silly audit   'es-set-tostringtag': [ '2.1.0' ],
+21 silly audit   esbuild: [ '0.21.5' ],
+21 silly audit   escalade: [ '3.2.0' ],
+21 silly audit   'fast-glob': [ '3.3.3' ],
+21 silly audit   fastq: [ '1.19.1' ],
+21 silly audit   'fill-range': [ '7.1.1' ],
+21 silly audit   'follow-redirects': [ '1.15.9' ],
+21 silly audit   'foreground-child': [ '3.3.1' ],
+21 silly audit   'form-data': [ '4.0.2' ],
+21 silly audit   'fraction.js': [ '4.3.7' ],
+21 silly audit   fsevents: [ '2.3.3' ],
+21 silly audit   'function-bind': [ '1.1.2' ],
+21 silly audit   'get-intrinsic': [ '1.3.0' ],
+21 silly audit   'get-proto': [ '1.0.1' ],
+21 silly audit   glob: [ '10.4.5' ],
+21 silly audit   gopd: [ '1.2.0' ],
+21 silly audit   'has-symbols': [ '1.1.0' ],
+21 silly audit   'has-tostringtag': [ '1.0.2' ],
+21 silly audit   hasown: [ '2.0.2' ],
+21 silly audit   'is-binary-path': [ '2.1.0' ],
+21 silly audit   'is-core-module': [ '2.16.1' ],
+21 silly audit   'is-extglob': [ '2.1.1' ],
+21 silly audit   'is-fullwidth-code-point': [ '3.0.0' ],
+21 silly audit   'is-glob': [ '4.0.3' ],
+21 silly audit   'is-number': [ '7.0.0' ],
+21 silly audit   isexe: [ '2.0.0' ],
+21 silly audit   jackspeak: [ '3.4.3' ],
+21 silly audit   jiti: [ '1.21.7' ],
+21 silly audit   'laravel-vite-plugin': [ '1.2.0' ],
+21 silly audit   lilconfig: [ '3.1.3' ],
+21 silly audit   'lines-and-columns': [ '1.2.4' ],
+21 silly audit   'lru-cache': [ '10.4.3' ],
+21 silly audit   'math-intrinsics': [ '1.1.0' ],
+21 silly audit   merge2: [ '1.4.1' ],
+21 silly audit   micromatch: [ '4.0.8' ],
+21 silly audit   'mime-db': [ '1.52.0' ],
+21 silly audit   'mime-types': [ '2.1.35' ],
+21 silly audit   'mini-svg-data-uri': [ '1.4.4' ],
+21 silly audit   minimatch: [ '9.0.5' ],
+21 silly audit   minipass: [ '7.1.2' ],
+21 silly audit   mz: [ '2.7.0' ],
+21 silly audit   nanoid: [ '3.3.11' ],
+21 silly audit   'node-releases': [ '2.0.19' ],
+21 silly audit   'normalize-path': [ '3.0.0' ],
+21 silly audit   'normalize-range': [ '0.1.2' ],
+21 silly audit   'object-assign': [ '4.1.1' ],
+21 silly audit   'object-hash': [ '3.0.0' ],
+21 silly audit   'package-json-from-dist': [ '1.0.1' ],
+21 silly audit   'path-key': [ '3.1.1' ],
+21 silly audit   'path-parse': [ '1.0.7' ],
+21 silly audit   'path-scurry': [ '1.11.1' ],
+21 silly audit   picocolors: [ '1.1.1' ],
+21 silly audit   picomatch: [ '2.3.1' ],
+21 silly audit   pify: [ '2.3.0' ],
+21 silly audit   pirates: [ '4.0.7' ],
+21 silly audit   postcss: [ '8.5.3' ],
+21 silly audit   'postcss-import': [ '15.1.0' ],
+21 silly audit   'postcss-js': [ '4.0.1' ],
+21 silly audit   'postcss-load-config': [ '4.0.2' ],
+21 silly audit   'postcss-nested': [ '6.2.0' ],
+21 silly audit   'postcss-selector-parser': [ '6.1.2' ],
+21 silly audit   'postcss-value-parser': [ '4.2.0' ],
+21 silly audit   'proxy-from-env': [ '1.1.0' ],
+21 silly audit   'queue-microtask': [ '1.2.3' ],
+21 silly audit   'read-cache': [ '1.0.0' ],
+21 silly audit   readdirp: [ '3.6.0' ],
+21 silly audit   resolve: [ '1.22.10' ],
+21 silly audit   reusify: [ '1.1.0' ],
+21 silly audit   rollup: [ '4.40.2' ],
+21 silly audit   'run-parallel': [ '1.2.0' ],
+21 silly audit   'shebang-command': [ '2.0.0' ],
+21 silly audit   'shebang-regex': [ '3.0.0' ],
+21 silly audit   'signal-exit': [ '4.1.0' ],
+21 silly audit   'source-map-js': [ '1.2.1' ],
+21 silly audit   'string-width': [ '5.1.2', '4.2.3' ],
+21 silly audit   'strip-ansi': [ '6.0.1', '7.1.0' ],
+21 silly audit   sucrase: [ '3.35.0' ],
+21 silly audit   'supports-preserve-symlinks-flag': [ '1.0.0' ],
+21 silly audit   tailwindcss: [ '3.4.17' ],
+21 silly audit   thenify: [ '3.3.1' ],
+21 silly audit   'thenify-all': [ '1.6.0' ],
+21 silly audit   'to-regex-range': [ '5.0.1' ],
+21 silly audit   'ts-interface-checker': [ '0.1.13' ],
+21 silly audit   'update-browserslist-db': [ '1.1.3' ],
+21 silly audit   'util-deprecate': [ '1.0.2' ],
+21 silly audit   vite: [ '5.4.19' ],
+21 silly audit   'vite-plugin-full-reload': [ '1.2.0' ],
+21 silly audit   which: [ '2.0.2' ],
+21 silly audit   'wrap-ansi': [ '8.1.0', '7.0.0' ],
+21 silly audit   yaml: [ '2.7.1' ],
+21 silly audit   '@splidejs/splide': [ '4.1.4' ]
+21 silly audit }
+22 verbose reify failed optional dependency /var/www/mailpanel/node_modules/fsevents
+23 silly reify mark deleted [ '/var/www/mailpanel/node_modules/fsevents' ]
+24 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-win32-x64-msvc
+25 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@rollup/rollup-win32-x64-msvc' ]
+26 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-win32-ia32-msvc
+27 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@rollup/rollup-win32-ia32-msvc' ]
+28 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-win32-arm64-msvc
+29 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@rollup/rollup-win32-arm64-msvc' ]
+30 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-linux-s390x-gnu
+31 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@rollup/rollup-linux-s390x-gnu' ]
+32 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-linux-riscv64-musl
+33 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@rollup/rollup-linux-riscv64-musl' ]
+34 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-linux-riscv64-gnu
+35 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@rollup/rollup-linux-riscv64-gnu' ]
+36 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-linux-powerpc64le-gnu
+37 silly reify mark deleted [
+37 silly reify   '/var/www/mailpanel/node_modules/@rollup/rollup-linux-powerpc64le-gnu'
+37 silly reify ]
+38 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-linux-loongarch64-gnu
+39 silly reify mark deleted [
+39 silly reify   '/var/www/mailpanel/node_modules/@rollup/rollup-linux-loongarch64-gnu'
+39 silly reify ]
+40 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-linux-arm64-musl
+41 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@rollup/rollup-linux-arm64-musl' ]
+42 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-linux-arm64-gnu
+43 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@rollup/rollup-linux-arm64-gnu' ]
+44 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-linux-arm-musleabihf
+45 silly reify mark deleted [
+45 silly reify   '/var/www/mailpanel/node_modules/@rollup/rollup-linux-arm-musleabihf'
+45 silly reify ]
+46 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-linux-arm-gnueabihf
+47 silly reify mark deleted [
+47 silly reify   '/var/www/mailpanel/node_modules/@rollup/rollup-linux-arm-gnueabihf'
+47 silly reify ]
+48 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-freebsd-x64
+49 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@rollup/rollup-freebsd-x64' ]
+50 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-freebsd-arm64
+51 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@rollup/rollup-freebsd-arm64' ]
+52 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-darwin-x64
+53 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@rollup/rollup-darwin-x64' ]
+54 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-darwin-arm64
+55 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@rollup/rollup-darwin-arm64' ]
+56 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-android-arm64
+57 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@rollup/rollup-android-arm64' ]
+58 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@rollup/rollup-android-arm-eabi
+59 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@rollup/rollup-android-arm-eabi' ]
+60 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/win32-x64
+61 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/win32-x64' ]
+62 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/win32-ia32
+63 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/win32-ia32' ]
+64 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/win32-arm64
+65 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/win32-arm64' ]
+66 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/sunos-x64
+67 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/sunos-x64' ]
+68 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/openbsd-x64
+69 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/openbsd-x64' ]
+70 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/netbsd-x64
+71 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/netbsd-x64' ]
+72 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/linux-s390x
+73 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/linux-s390x' ]
+74 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/linux-riscv64
+75 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/linux-riscv64' ]
+76 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/linux-ppc64
+77 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/linux-ppc64' ]
+78 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/linux-mips64el
+79 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/linux-mips64el' ]
+80 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/linux-loong64
+81 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/linux-loong64' ]
+82 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/linux-ia32
+83 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/linux-ia32' ]
+84 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/linux-arm64
+85 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/linux-arm64' ]
+86 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/linux-arm
+87 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/linux-arm' ]
+88 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/freebsd-x64
+89 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/freebsd-x64' ]
+90 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/freebsd-arm64
+91 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/freebsd-arm64' ]
+92 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/darwin-x64
+93 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/darwin-x64' ]
+94 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/darwin-arm64
+95 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/darwin-arm64' ]
+96 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/android-x64
+97 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/android-x64' ]
+98 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/android-arm64
+99 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/android-arm64' ]
+100 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/android-arm
+101 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/android-arm' ]
+102 verbose reify failed optional dependency /var/www/mailpanel/node_modules/@esbuild/aix-ppc64
+103 silly reify mark deleted [ '/var/www/mailpanel/node_modules/@esbuild/aix-ppc64' ]
+104 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 214ms
+105 silly audit report {
+105 silly audit report   'brace-expansion': [
+105 silly audit report     {
+105 silly audit report       id: 1105422,
+105 silly audit report       url: 'https://github.com/advisories/GHSA-v6h2-p8h4-qcjw',
+105 silly audit report       title: 'brace-expansion Regular Expression Denial of Service vulnerability',
+105 silly audit report       severity: 'low',
+105 silly audit report       vulnerable_versions: '>=2.0.1 <=4.0.0',
+105 silly audit report       cwe: [Array],
+105 silly audit report       cvss: [Object]
+105 silly audit report     }
+105 silly audit report   ],
+105 silly audit report   esbuild: [
+105 silly audit report     {
+105 silly audit report       id: 1102341,
+105 silly audit report       url: 'https://github.com/advisories/GHSA-67mh-4wv8-2f99',
+105 silly audit report       title: 'esbuild enables any website to send any requests to the development server and read the response',
+105 silly audit report       severity: 'moderate',
+105 silly audit report       vulnerable_versions: '<=0.24.2',
+105 silly audit report       cwe: [Array],
+105 silly audit report       cvss: [Object]
+105 silly audit report     }
+105 silly audit report   ]
+105 silly audit report }
+106 silly packumentCache corgi:https://registry.npmjs.org/brace-expansion cache-miss
+107 silly packumentCache corgi:https://registry.npmjs.org/esbuild cache-miss
+108 http fetch GET 200 https://registry.npmjs.org/brace-expansion 90ms (cache miss)
+109 silly packumentCache corgi:https://registry.npmjs.org/brace-expansion set size:undefined disposed:false
+110 http fetch GET 200 https://registry.npmjs.org/esbuild 131ms (cache revalidated)
+111 silly packumentCache corgi:https://registry.npmjs.org/esbuild set size:861077 disposed:false
+112 silly packumentCache corgi:https://registry.npmjs.org/minimatch cache-miss
+113 http fetch GET 200 https://registry.npmjs.org/minimatch 64ms (cache miss)
+114 silly packumentCache corgi:https://registry.npmjs.org/minimatch set size:undefined disposed:false
+115 silly packumentCache corgi:https://registry.npmjs.org/vite cache-miss
+116 http fetch GET 200 https://registry.npmjs.org/vite 177ms (cache updated)
+117 silly packumentCache corgi:https://registry.npmjs.org/vite set size:undefined disposed:false
+118 silly packumentCache corgi:https://registry.npmjs.org/glob cache-miss
+119 http fetch GET 200 https://registry.npmjs.org/glob 66ms (cache miss)
+120 silly packumentCache corgi:https://registry.npmjs.org/glob set size:undefined disposed:false
+121 silly packumentCache corgi:https://registry.npmjs.org/laravel-vite-plugin cache-miss
+122 http fetch GET 200 https://registry.npmjs.org/laravel-vite-plugin 169ms (cache revalidated)
+123 silly packumentCache corgi:https://registry.npmjs.org/laravel-vite-plugin set size:59984 disposed:false
+124 silly packumentCache corgi:https://registry.npmjs.org/sucrase cache-miss
+125 http fetch GET 200 https://registry.npmjs.org/sucrase 54ms (cache miss)
+126 silly packumentCache corgi:https://registry.npmjs.org/sucrase set size:undefined disposed:false
+127 silly packumentCache corgi:https://registry.npmjs.org/tailwindcss cache-miss
+128 http fetch GET 200 https://registry.npmjs.org/tailwindcss 326ms (cache miss)
+129 silly packumentCache corgi:https://registry.npmjs.org/tailwindcss set size:undefined disposed:false
+130 silly packumentCache corgi:https://registry.npmjs.org/@tailwindcss%2fforms cache-miss
+131 http fetch GET 200 https://registry.npmjs.org/@tailwindcss%2fforms 71ms (cache miss)
+132 silly packumentCache corgi:https://registry.npmjs.org/@tailwindcss%2fforms set size:undefined disposed:false
+133 silly ADD
+134 silly ADD
+135 silly ADD
+136 silly ADD
+137 silly ADD
+138 silly ADD
+139 silly ADD
+140 silly ADD
+141 silly ADD
+142 silly ADD
+143 silly ADD
+144 silly ADD
+145 silly ADD
+146 silly ADD
+147 silly ADD
+148 silly ADD
+149 silly ADD
+150 silly ADD
+151 silly ADD
+152 silly ADD
+153 silly ADD
+154 silly ADD
+155 silly ADD
+156 silly ADD
+157 silly ADD
+158 silly ADD
+159 silly ADD
+160 silly ADD
+161 silly ADD
+162 silly ADD
+163 silly ADD
+164 silly ADD
+165 silly ADD
+166 silly ADD
+167 silly ADD
+168 silly ADD
+169 silly ADD
+170 silly ADD
+171 silly ADD
+172 silly ADD
+173 silly ADD
+174 verbose cwd /var/www/mailpanel
+175 verbose os Linux 5.15.0-25-generic
+176 verbose node v18.20.8
+177 verbose npm  v10.8.2
+178 verbose exit 0
+179 info ok

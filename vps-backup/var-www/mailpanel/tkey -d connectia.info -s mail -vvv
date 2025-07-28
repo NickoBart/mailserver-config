@@ -1,0 +1,28 @@
+[0;1;32m●[0m opendkim.service - OpenDKIM Milter
+     Loaded: loaded (/lib/systemd/system/opendkim.service; enabled; vendor preset: enabled)
+     Active: [0;1;32mactive (running)[0m since Thu 2025-05-29 14:47:39 CDT; 3 days ago
+       Docs: man:opendkim(8)
+             man:opendkim.conf(5)
+             man:opendkim-lua(3)
+             man:opendkim-genkey(8)
+             man:opendkim-genzone(8)
+             man:opendkim-testkey(8)
+             http://www.opendkim.org/docs.html
+    Process: 366998 ExecStart=/usr/sbin/opendkim (code=exited, status=0/SUCCESS)
+   Main PID: 367011 (opendkim)
+      Tasks: 7 (limit: 9454)
+     Memory: 6.8M
+        CPU: 36.111s
+     CGroup: /system.slice/opendkim.service
+             └─367011 /usr/sbin/opendkim
+
+May 31 19:29:12 vmi2599867.contaboserver.net opendkim[367011]: 8A7B4280E0E: no signing table match for 'info@w3schools.com'
+May 31 19:29:12 vmi2599867.contaboserver.net opendkim[367011]: [0;38;5;245m[0;1;31m[0;38;5;245m8A7B4280E0E: no signature data[0m
+Jun 01 07:24:50 vmi2599867.contaboserver.net opendkim[367011]: ADDE5280E13: no signing table match for 'info@9384.com'
+Jun 01 07:24:50 vmi2599867.contaboserver.net opendkim[367011]: [0;38;5;245m[0;1;31m[0;38;5;245mADDE5280E13: no signature data[0m
+Jun 01 07:40:25 vmi2599867.contaboserver.net opendkim[367011]: 22C74280E12: no signing table match for 'info@payoneer.com'
+Jun 01 07:40:25 vmi2599867.contaboserver.net opendkim[367011]: [0;38;5;245m[0;1;31m[0;38;5;245m22C74280E12: no signature data[0m
+Jun 01 20:31:44 vmi2599867.contaboserver.net opendkim[367011]: E0077280E11: no signing table match for 'info@gusuwang.com'
+Jun 01 20:31:44 vmi2599867.contaboserver.net opendkim[367011]: [0;38;5;245m[0;1;31m[0;38;5;245mE0077280E11: no signature data[0m
+Jun 01 20:47:21 vmi2599867.contaboserver.net opendkim[367011]: 30B05280E11: no signing table match for 'info@wetransfer.com'
+Jun 01 20:47:21 vmi2599867.contaboserver.net opendkim[367011]: [0;38;5;245m[0;1;31m[0;38;5;245m30B05280E11: no signature data[0m

@@ -1,0 +1,1 @@
+/etc/roundcube/plugins/squirrelmail_usercopy/config.inc.php

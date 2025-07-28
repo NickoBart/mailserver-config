@@ -1,0 +1,5 @@
+routes/console.php
+routes/channels.php
+routes/web.php
+routes/auth.php
+routes/api.php

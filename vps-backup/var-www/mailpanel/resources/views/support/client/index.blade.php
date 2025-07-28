@@ -1,0 +1,33 @@
+@extends('adminlte::page')
+
+@section('content')
+<div class="container mx-auto py-8">
+  <h1 class="text-2xl font-bold mb-4">Mis Tickets de Soporte</h1>
+  @if(session('success'))
+    <div class="bg-green-100 text-green-800 p-2 rounded mb-4">{{ session('success') }}</div>
+  @endif
+  <a href="{{ route('support.tickets.create') }}" class="btn btn-primary mb-4">Crear Nuevo Ticket</a>
+  <table class="table-auto w-full">
+    <thead>
+      <tr>
+        <th>ID</th><th>Asunto</th><th>Estado</th><th>Mensajes</th><th>Fecha</th><th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @forelse($tickets as $ticket)
+      <tr>
+        <td>{{ $ticket->id }}</td>
+        <td>{{ $ticket->subject }}</td>
+        <td>{{ ucfirst($ticket->status) }}</td>
+        <td>{{ $ticket->messages_count }}</td>
+        <td>{{ $ticket->created_at->format('d-m-Y H:i') }}</td>
+        <td><a href="{{ route('support.tickets.show',$ticket) }}">Ver</a></td>
+      </tr>
+      @empty
+      <tr><td colspan="6">No tienes tickets abiertos.</td></tr>
+      @endforelse
+    </tbody>
+  </table>
+  <div class="mt-4">{{ $tickets->links() }}</div>
+</div>
+@endsection

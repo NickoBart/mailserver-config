@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Providers;
+use Illuminate\Support\Facades\Gate;
+
+// use Illuminate\Support\Facades\Gate;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+
+class AuthServiceProvider extends ServiceProvider
+{
+    /**
+     * The model to policy mappings for the application.
+     *
+     * @var array<class-string, class-string>
+     */
+    protected $policies = [
+        \App\Models\TicketAttachment::class => \App\Policies\TicketAttachmentPolicy::class,
+    ];
+
+    /**
+     * Register any authentication / authorization services.
+     */
+    public function boot()
+    {
+        $this->registerPolicies();
+
+        // Gate para superadmin
+        Gate::define('admin', function ($user) {
+            return $user->email === 'admin@connectia.info';
+        });
+
+    }
+}

@@ -1,0 +1,10 @@
+[0;1;32m●[0m postfix.service - Postfix Mail Transport Agent
+     Loaded: loaded (/lib/systemd/system/postfix.service; enabled; vendor preset: enabled)
+     Active: [0;1;32mactive (exited)[0m since Thu 2025-05-29 14:47:43 CDT; 3 days ago
+       Docs: man:postfix(1)
+    Process: 367453 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
+    Process: 384867 ExecReload=/bin/true (code=exited, status=0/SUCCESS)
+   Main PID: 367453 (code=exited, status=0/SUCCESS)
+        CPU: 2ms
+
+Notice: journal has been rotated since unit was started, output may be incomplete.
