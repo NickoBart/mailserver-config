@@ -1,0 +1,12 @@
+# Configuración SQL para usuarios y contraseñas virtuales en Dovecot
+driver = mysql
+connect = host=localhost dbname=mailserver user=postfixadmin password=CHANGE_ME charset=utf8
+
+# Consulta para obtener la contraseña encriptada y el esquema de encriptación
+password_query = SELECT password FROM mailbox WHERE username = '%u'
+
+# Consulta para verificar la existencia del usuario y devolver uid/gid y buzón
+user_query = SELECT 5000 AS uid, 5000 AS gid, CONCAT('/var/mail/vhosts/', domain, '/', local_part) AS home, CONCAT('/var/mail/vhosts/', domain, '/', local_part, '/Maildir/') AS mail FROM mailbox WHERE username = '%u'
+
+# Opcional: Enumerar todos los usuarios virtuales (para stats, no imprescindible)
+iterate_query = SELECT username AS user FROM mailbox
